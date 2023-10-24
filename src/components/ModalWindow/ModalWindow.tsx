@@ -9,7 +9,7 @@ export type ModalWindowProps = {
   website: string;
 };
 
-export const ModalWindow: React.FC<ModalWindowProps> = (props) => {
+const ModalWindow: React.FC<ModalWindowProps> = (props) => {
   const { open, onClose, name, website } = props;
   return (
     <Modal
@@ -28,3 +28,5 @@ export const ModalWindow: React.FC<ModalWindowProps> = (props) => {
     </Modal>
   );
 };
+
+export default ModalWindow;

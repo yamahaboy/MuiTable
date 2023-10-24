@@ -7,3 +7,7 @@ export const setUser = (userData: Users[]) => {
 export const clearUser = () => {
   return { type: UserReducerEnum.CLEARUSER };
 };
+
+export const setFilterName = (name: string | null) => {
+  return { type: UserReducerEnum.SETFILTERNAME, name };
+};

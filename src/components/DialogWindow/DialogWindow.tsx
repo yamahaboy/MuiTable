@@ -14,7 +14,7 @@ type DialogWindowProps = {
   website: string;
 };
 
-export const DialogWindow: React.FC<DialogWindowProps> = (props) => {
+const DialogWindow: React.FC<DialogWindowProps> = (props) => {
   const { open, onClose, username, website } = props;
   return (
     <Dialog open={open} onClose={onClose}>
@@ -27,3 +27,5 @@ export const DialogWindow: React.FC<DialogWindowProps> = (props) => {
     </Dialog>
   );
 };
+
+export default DialogWindow;

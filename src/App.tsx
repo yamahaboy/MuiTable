@@ -1,4 +1,4 @@
-import { UsersTable } from "./components/UsersTable/UsersTable";
+import UsersTable from "./containers/UsersTable/UsersTable";
 import "./styles/App.css";
 
 function App() {
