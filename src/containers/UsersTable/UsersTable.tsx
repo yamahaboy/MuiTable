@@ -6,7 +6,6 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableHead,
   TableRow,
   Tooltip,
 } from "@mui/material";
@@ -15,11 +14,8 @@ import { setUser } from "../../store/reducers/Actions";
 import UsersAutoComplete from "../../components/UsersAutoComplete/UsersAutoComplete";
 import ModalWindow from "../../components/ModalWindow/ModalWindow";
 import DialogWindow from "../../components/DialogWindow/DialogWindow";
-import {
-  TableHeadContentStyles,
-  TableBodyStyles,
-  TableHeadStyles,
-} from "./styles";
+import { TableBodyStyles } from "./styles";
+import Head from "../../components/TableHead/TableHead";
 
 const UsersTable: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -51,14 +47,7 @@ const UsersTable: React.FC = () => {
         setSelectedName={setSelectedName}
       />
       <Table sx={{ width: "70%", margin: "3rem auto" }}>
-        <TableHead sx={TableHeadStyles}>
-          <TableRow>
-            <TableCell sx={TableHeadContentStyles}>Id</TableCell>
-            <TableCell sx={TableHeadContentStyles}>Name</TableCell>
-            <TableCell sx={TableHeadContentStyles}>UserName</TableCell>
-            <TableCell sx={TableHeadContentStyles}>WebSite</TableCell>
-          </TableRow>
-        </TableHead>
+        <Head />
         <TableBody sx={{ backgroundColor: "#e6e3e3" }}>
           {userData &&
             userData
@@ -66,68 +55,54 @@ const UsersTable: React.FC = () => {
                 selectedName ? user.name === selectedName : true
               )
               .map(({ id, name, username, website }: Users) => (
-                <TableRow key={id}>
-                  <TableCell>
-                    <Tooltip title={id}>
-                      <p
-                        style={TableBodyStyles}
-                        onClick={() =>
-                          handleSelectedUser(
-                            { id, name, username, website },
-                            true
-                          )
-                        }
-                      >
-                        {id}
-                      </p>
-                    </Tooltip>
-                  </TableCell>
-                  <TableCell>
-                    <Tooltip title={name} sx={TableBodyStyles}>
-                      <p
-                        style={TableBodyStyles}
-                        onClick={() =>
-                          handleSelectedUser(
-                            { id, name, username, website },
-                            false
-                          )
-                        }
-                      >
-                        {name}
-                      </p>
-                    </Tooltip>
-                  </TableCell>
-                  <TableCell>
-                    <Tooltip title={username} sx={TableBodyStyles}>
-                      <p
-                        style={TableBodyStyles}
-                        onClick={() =>
-                          handleSelectedUser(
-                            { id, name, username, website },
-                            false
-                          )
-                        }
-                      >
-                        {username}
-                      </p>
-                    </Tooltip>
-                  </TableCell>
-                  <TableCell>
-                    <Tooltip title={website} sx={TableBodyStyles}>
-                      <p
-                        style={TableBodyStyles}
-                        onClick={() =>
-                          handleSelectedUser(
-                            { id, name, username, website },
-                            false
-                          )
-                        }
-                      >
-                        {website}
-                      </p>
-                    </Tooltip>
-                  </TableCell>
-                </TableRow>
+                <Tooltip title={`${id}, ${name}, ${username}, ${website}`}>
+                  <TableRow key={id}>
+                    <TableCell
+                      style={TableBodyStyles}
+                      onClick={() =>
+                        handleSelectedUser(
+                          { id, name, username, website },
+                          true
+                        )
+                      }
+                    >
+                      {id}
+                    </TableCell>
+                    <TableCell
+                      style={TableBodyStyles}
+                      onClick={() =>
+                        handleSelectedUser(
+                          { id, name, username, website },
+                          false
+                        )
+                      }
+                    >
+                      {name}
+                    </TableCell>
+                    <TableCell
+                      style={TableBodyStyles}
+                      onClick={() =>
+                        handleSelectedUser(
+                          { id, name, username, website },
+                          false
+                        )
+                      }
+                    >
+                      {username}
+                    </TableCell>
+                    <TableCell
+                      style={TableBodyStyles}
+                      onClick={() =>
+                        handleSelectedUser(
+                          { id, name, username, website },
+                          false
+                        )
+                      }
+                    >
+                      {website}
+                    </TableCell>
+                  </TableRow>
+                </Tooltip>
               ))}
         </TableBody>
       </Table>
